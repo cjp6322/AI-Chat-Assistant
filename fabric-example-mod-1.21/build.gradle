@@ -1,0 +1,59 @@
+plugins {
+    id 'fabric-loom' version '1.10-SNAPSHOT'
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group   = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+loom {
+    splitEnvironmentSourceSets()
+
+    mods {
+        // make sure this matches your mod id in fabric.mod.json
+        "minecraftgpt" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+}
+
+dependencies {
+    // Minecraft / mappings / loader
+    minecraft    "com.mojang:minecraft:${project.minecraft_version}"
+    mappings      "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+    // the core Fabric API (this pulls in all the sub-APIs at runtime)
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // the **chat** API (client-only)
+    // NOTE: the module is now called fabric-message-api-v1, not fabric-client-chat-api-v1
+    modImplementation "net.fabricmc.fabric-api:fabric-message-api-v1:${project.fabric_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") {
+        expand "version": inputs.properties.version
+    }
+}
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 21
+}
