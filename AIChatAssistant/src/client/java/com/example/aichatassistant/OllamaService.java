@@ -1,4 +1,4 @@
-package com.example.minecraftgpt;
+package com.example.aichatassistant;
 
 import java.io.IOException;
 import java.net.URI;
@@ -6,6 +6,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpClient.Version;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -21,7 +22,8 @@ public class OllamaService {
             .version(Version.HTTP_1_1)
             .build();
 
-    private OllamaService() {}
+    private OllamaService() {
+    }
 
     public static OllamaService getInstance() {
         return INSTANCE;

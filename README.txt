@@ -1,66 +1,68 @@
-MinecraftGPT Mod
+AI Chat Assistant
 
-This project is a Minecraft Fabric mod that connects to a locally hosted AI (LLaMA 3 via Ollama) to provide in-game GPT-style chat responses. It includes both a FastAPI backend and a Minecraft client mod.
+This project consists of two main components:
+
+1. Python FastAPI Backend: A proxy server that forwards chat messages to a locally hosted Ollama LLaMA 3 model and returns AI-generated responses.
+2. Minecraft Fabric Mod: A client-side mod built with Fabric for Minecraft 1.21.5 that hooks into the in-game chat to provide GPT-style answers.
 
 ---
 
 🧠 Prerequisites
 
-Python Backend (FastAPI + Ollama)
-1. Install Python 3.11+  
-   https://www.python.org/downloads/
+Python Backend
+1. Install Python 3.11 or newer:
 
-2. Install dependencies  
-   In the project folder, run:
+   https://www.python.org/downloads/
+2. Install required Python packages:
    pip install fastapi uvicorn requests
 
-3. Install Ollama  
+3. Install Ollama (for LLaMA 3 model support):
    https://ollama.com/download
 
-4. Start the Ollama server  
-   In a terminal:
+4. Start the Ollama server:
    ollama serve
 
-5. Run the FastAPI proxy server  
-   In a separate terminal:
+5. Run the FastAPI proxy server:
    python server.py
 
 ---
 
-🧪 Testing the Minecraft Mod
+🧪 Installing the Minecraft Mod
+1. Install Minecraft Java Edition 1.21.5 via the official launcher.
 
-1. Install IntelliJ IDEA
-   https://www.jetbrains.com/idea/download
+2. Download the Fabric Mod Loader installer:
+   https://fabricmc.net/use/
 
-2. Install Minecraft Development Plugin
-   In IntelliJ:
-   - Go to File > Settings > Plugins
-   - Search for Minecraft Development
-   - Install it and restart the IDE
+3. Run the Fabric installer and select version 1.21.5.
 
-3. Open the project
-   - Open the folder fabric-example-mod-1.21 (or your project root) in IntelliJ.
+4. Download the Fabric API JAR matching 1.21.5:
+   https://www.curseforge.com/minecraft/mc-mods/fabric-api
 
-4. Run the Minecraft Client
-   Open the IntelliJ terminal (Alt + F12) and run:
-   .\gradlew.bat runClient
-
-This will compile and launch the modded Minecraft client with your GPT-powered chat mod enabled.
+5. Copy JARs to the Minecraft mods folder:
+   - `AIChatAssistantClientMod.jar` (compiled mod)
+   - `fabric-api-<version>.jar`
+   %appdata%/.minecraft/mods/
 
 ---
 
 💬 Using the Mod
 
-In-game, open the chat and type:
-?ask How do I make a crafting table?
+1. Ensure both Ollama (`ollama serve`) and the FastAPI server (`python server.py`) are running on `localhost:8000`.
 
-You’ll receive a short, accurate response from the AI—powered by LLaMA 3, grounded in Minecraft knowledge.
+2. Launch the Minecraft Launcher, select the Fabric profile for 1.21.5, and click Play.
+
+3. In-game, open chat and type:
+   ?ask How do I get a Totem of Undying?
+
+4. Watch for the response prefixed with:
+   [AI Chat Assistant] <answer>
 
 ---
 
 🛠 Troubleshooting
 
-- If you see 422 or 502 errors, ensure that:
-  - Ollama is running (ollama serve)
-  - llama3 is downloaded (ollama run llama3)
-  - server.py is active and reachable on http://localhost:8000
+- No response or errors in chat:
+  - Verify `ollama serve` is running and the `llama3` model is downloaded.
+  - Confirm `server.py` is active and accessible at `http://localhost:8000`.
+  - Ensure your Fabric Loader and Fabric API versions match Minecraft 1.21.5.
+  - Check that both `AIChatAssistantClientMod.jar` and the Fabric API JAR are in the correct `mods` folder.

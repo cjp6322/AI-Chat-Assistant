@@ -1,6 +1,6 @@
-package com.example.minecraftgpt;
+package com.example.aichatassistant;
 
-import com.example.minecraftgpt.OllamaService;
+import com.example.aichatassistant.OllamaService;
 import net.fabricmc.fabric.api.client.message.v1.ClientSendMessageEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
@@ -23,7 +23,7 @@ public class ClientChatEventHandler {
                                 MinecraftClient.getInstance()
                                         .inGameHud
                                         .getChatHud()
-                                        .addMessage(Text.of("§6[GPT]§r " + answer))
+                                        .addMessage(Text.of("§6[AI Chat Assistant]§r " + answer))
                         );
                     } catch (IOException | InterruptedException e) {
                         e.printStackTrace();
@@ -31,7 +31,7 @@ public class ClientChatEventHandler {
                                 MinecraftClient.getInstance()
                                         .inGameHud
                                         .getChatHud()
-                                        .addMessage(Text.of("§c[GPT Error]§r " + e.getMessage()))
+                                        .addMessage(Text.of("§c[AI Chat Assistant Error]§r " + e.getMessage()))
                         );
                     }
                 });

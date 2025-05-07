@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "aichatassistant",
+  "version": "${version}",
+  "name": "AI Chat Assistant",
+  "description": "Minecraft Q&A using Ollama + Wiki with LLM-driven search term extraction",
+  "authors": [
+    "cjpflugh"
+  ],
+  "contact": {
+    "homepage": "https://github.com/cjp6322/AI-Chat-Assistant",
+    "sources": "https://github.com/cjp6322/AI-Chat-Assistant"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/aichatassistant/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.example.aichatassistant.AIChatAssistantClientMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.5",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

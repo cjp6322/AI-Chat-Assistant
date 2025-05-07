@@ -4,7 +4,7 @@ plugins {
 }
 
 version = project.mod_version
-group   = project.maven_group
+group = project.maven_group
 
 base {
     archivesName = project.archives_base_name
@@ -20,8 +20,7 @@ loom {
 
     mods {
         // make sure this matches your mod id in fabric.mod.json
-        "minecraftgpt" {
-            sourceSet sourceSets.main
+        "aichatassistant" {
             sourceSet sourceSets.client
         }
     }
@@ -29,8 +28,8 @@ loom {
 
 dependencies {
     // Minecraft / mappings / loader
-    minecraft    "com.mojang:minecraft:${project.minecraft_version}"
-    mappings      "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     // the core Fabric API (this pulls in all the sub-APIs at runtime)
